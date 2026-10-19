@@ -1,0 +1,1035 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="Papa's guide for the China trip, 24 Oct to 3 Nov 2026. Choose your free days and get your phone ready.">
+<title>Papa's China Trip</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E✈️%3C/text%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg: #f4f6f6;
+    --card: #ffffff;
+    --text: #12201f;
+    --muted: #3a4847;
+    --line: #c9d3d2;
+    --accent: #0a6560;
+    --accent-ink: #ffffff;
+    --accent-soft: #e0f0ee;
+    --amber-bg: #fff3d6;
+    --amber-line: #a35f00;
+    --amber-ink: #4f3200;
+    --red-bg: #fde9e7;
+    --red-line: #b42318;
+    --red-ink: #6e130c;
+    --green: #146c34;
+    --green-ink: #ffffff;
+    --tbd-bg: #e3e5e5;
+    --tbd-ink: #2f3535;
+    --c-conf: #0a6560;
+    --c-sha: #2c55a8;
+    --c-free: #7a3fa0;
+    --c-home: #5b6463;
+    --dot-off: #c3cccb;
+    --shadow: 0 1px 3px rgba(0,0,0,.08);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0e1514;
+      --card: #172120;
+      --text: #eef4f3;
+      --muted: #c2cecc;
+      --line: #34413f;
+      --accent: #5cc8bd;
+      --accent-ink: #04201d;
+      --accent-soft: #15302d;
+      --amber-bg: #33260a;
+      --amber-line: #f0b54a;
+      --amber-ink: #ffe3a6;
+      --red-bg: #3a1512;
+      --red-line: #ff8a7a;
+      --red-ink: #ffd4cd;
+      --green: #3ccf6e;
+      --green-ink: #03200c;
+      --tbd-bg: #3a4342;
+      --tbd-ink: #eef4f3;
+      --c-conf: #5cc8bd;
+      --c-sha: #8fb0f5;
+      --c-free: #d19af5;
+      --c-home: #a9b3b2;
+      --dot-off: #46524f;
+      --shadow: none;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+    font-size: 19px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+  }
+  h1 { font-size: 30px; line-height: 1.25; margin: 4px 0 12px; }
+  h2 { font-size: 22px; line-height: 1.3; margin: 0 0 8px; }
+  h3 { font-size: 20px; margin: 0 0 6px; }
+  p { margin: 0 0 10px; }
+  ul, ol { margin: 0 0 10px; padding-left: 24px; }
+  li { margin-bottom: 6px; }
+  a { color: var(--accent); }
+  strong { font-weight: 700; }
+  :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+  /* Sticky top bar */
+  .topbar {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--card);
+    border-bottom: 1px solid var(--line);
+    padding: 8px 16px 10px;
+    padding-top: max(8px, env(safe-area-inset-top));
+  }
+  .topbar-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .stepcount { font-weight: 700; font-size: 19px; margin: 0; }
+  .menu-btn {
+    min-height: 56px; padding: 0 16px; font: inherit; font-size: 18px; font-weight: 600;
+    background: var(--accent-soft); color: var(--text); border: 2px solid var(--accent); border-radius: 14px; cursor: pointer;
+  }
+  .progress { height: 10px; background: var(--dot-off); border-radius: 99px; margin-top: 8px; overflow: hidden; }
+  .progress-fill { height: 100%; background: var(--accent); width: 14%; transition: width .3s; }
+  .menu { margin-top: 10px; }
+  .menu ol { list-style: none; padding: 0; margin: 0; }
+  .menu li { margin: 0 0 6px; }
+  .menu button {
+    width: 100%; min-height: 56px; text-align: left; font: inherit; font-size: 19px; color: var(--text);
+    background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: 8px 14px; cursor: pointer;
+  }
+  .menu button[aria-current="step"] { border: 2px solid var(--accent); font-weight: 700; }
+
+  main { max-width: 640px; margin: 0 auto; padding: 16px 16px 40px; }
+  .step:focus { outline: none; }
+  .lead { font-size: 20px; }
+
+  /* Cards */
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 18px;
+    padding: 16px; margin: 0 0 16px; box-shadow: var(--shadow); scroll-margin-top: 110px;
+  }
+  .card-title { display: flex; gap: 10px; align-items: flex-start; }
+  .emoji { font-size: 28px; line-height: 1.1; flex: none; }
+  .card.amber { background: var(--amber-bg); border: 2px solid var(--amber-line); color: var(--amber-ink); }
+  .card.red { background: var(--red-bg); border: 2px solid var(--red-line); color: var(--red-ink); }
+  .card.amber a, .card.red a { color: inherit; }
+  .tag {
+    display: inline-block; font-size: 16px; font-weight: 700; border-radius: 8px; padding: 2px 10px; margin: 0 0 8px;
+  }
+  .tag.amber { background: var(--amber-line); color: var(--card); }
+  .tag.red { background: var(--red-line); color: var(--card); }
+  .tag.rec { background: var(--accent); color: var(--accent-ink); }
+
+  details.more { margin-top: 6px; }
+  details > summary {
+    min-height: 56px; display: flex; align-items: center; gap: 8px; cursor: pointer;
+    font-weight: 700; color: var(--accent); list-style: none;
+  }
+  .card.amber details > summary, .card.red details > summary { color: inherit; }
+  details > summary::-webkit-details-marker { display: none; }
+  details > summary::before { content: "▸"; font-size: 20px; transition: transform .2s; }
+  details[open] > summary::before { transform: rotate(90deg); }
+  details .inner { padding: 4px 0 6px; }
+
+  /* "To be confirmed" chip */
+  .tbd {
+    display: inline-block; background: var(--tbd-bg); color: var(--tbd-ink);
+    font-size: 16px; font-weight: 600; border-radius: 99px; padding: 1px 10px; white-space: nowrap; vertical-align: 1px;
+  }
+
+  /* Timeline */
+  .legend { display: grid; gap: 10px; margin: 0 0 16px; }
+  .legend-item { display: flex; gap: 12px; align-items: flex-start; }
+  .swatch { width: 22px; height: 22px; border-radius: 6px; flex: none; margin-top: 4px; }
+  .days { list-style: none; padding: 0; margin: 0; }
+  .day {
+    display: grid; grid-template-columns: 108px 1fr; gap: 10px; align-items: start;
+    padding: 10px 0 10px 14px; border-left: 8px solid var(--line); margin: 0 0 4px; border-radius: 4px;
+  }
+  .day-date { font-weight: 700; white-space: nowrap; }
+  .b-conf { border-left-color: var(--c-conf); }
+  .b-sha { border-left-color: var(--c-sha); }
+  .b-free { border-left-color: var(--c-free); }
+  .b-home { border-left-color: var(--c-home); }
+  .bg-conf { background: var(--c-conf); }
+  .bg-sha { background: var(--c-sha); }
+  .bg-free { background: var(--c-free); }
+  .bg-home { background: var(--c-home); }
+  .day-label { display: block; font-size: 16px; font-weight: 700; color: var(--muted); }
+
+  /* Options */
+  .option.selected { border: 3px solid var(--accent); }
+  .meters { display: grid; gap: 6px; margin: 10px 0 12px; }
+  .meter { display: grid; grid-template-columns: 9.5em auto 1fr; gap: 10px; align-items: center; }
+  .dots { display: inline-flex; gap: 6px; }
+  .dot { width: 18px; height: 18px; border-radius: 50%; background: var(--dot-off); }
+  .dot.on { background: var(--accent); }
+  .meter-word { color: var(--muted); font-size: 17px; }
+  .plan { list-style: none; padding: 0; }
+  .plan li { padding-left: 0; }
+  .label { font-weight: 700; }
+
+  /* Buttons */
+  .btn {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    width: 100%; min-height: 60px; padding: 10px 16px; margin: 8px 0 0;
+    font: inherit; font-size: 20px; font-weight: 700; text-align: center; text-decoration: none;
+    border-radius: 14px; border: 2px solid var(--accent); background: var(--card); color: var(--accent); cursor: pointer;
+  }
+  .btn.primary { background: var(--accent); color: var(--accent-ink); }
+  .btn.green { background: var(--green); border-color: var(--green); color: var(--green-ink); font-size: 21px; min-height: 72px; }
+  .choose[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }
+  .choose .on-txt { display: none; }
+  .choose[aria-pressed="true"] .on-txt { display: inline; }
+  .choose[aria-pressed="true"] .off-txt { display: none; }
+
+  .pills { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin: 8px 0 4px; }
+  .pill {
+    min-height: 56px; padding: 8px 12px; font: inherit; font-size: 19px; font-weight: 600;
+    border: 2px solid var(--line); border-radius: 14px; background: var(--card); color: var(--text); cursor: pointer;
+  }
+  .pill[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+  .pill[aria-pressed="true"]::before { content: "✓ "; }
+
+  .ticks { list-style: none; padding: 0; margin: 8px 0 0; display: grid; gap: 10px; }
+  .ticks li { margin: 0; }
+  .tick {
+    width: 100%; min-height: 56px; display: flex; align-items: center; gap: 12px; text-align: left;
+    padding: 8px 14px; font: inherit; font-size: 19px; color: var(--text);
+    border: 2px solid var(--line); border-radius: 14px; background: var(--card); cursor: pointer;
+  }
+  .box {
+    width: 30px; height: 30px; flex: none; border: 3px solid var(--muted); border-radius: 8px;
+    display: inline-flex; align-items: center; justify-content: center; font-weight: 800; font-size: 20px;
+  }
+  .tick[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); }
+  .tick[aria-pressed="true"] .box { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+  .tick[aria-pressed="true"] .box::after { content: "✓"; }
+
+  /* Walkthrough */
+  .walk { display: grid; grid-template-columns: 52px 1fr; gap: 12px; }
+  .num {
+    width: 52px; height: 52px; border-radius: 50%; background: var(--accent); color: var(--accent-ink);
+    font-size: 26px; font-weight: 800; display: flex; align-items: center; justify-content: center;
+  }
+  .walk-done { grid-column: 1 / -1; }
+  .done[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }
+  .done .on-txt { display: none; }
+  .done[aria-pressed="true"] .on-txt { display: inline; }
+  .done[aria-pressed="true"] .off-txt { display: none; }
+
+  .applist { list-style: none; padding: 0; margin: 0; }
+  .applist li { border-top: 1px solid var(--line); padding: 10px 0; margin: 0; }
+  .applist li:first-child { border-top: 0; padding-top: 0; }
+  .where { display: inline-block; font-size: 16px; font-weight: 600; background: var(--accent-soft); border-radius: 8px; padding: 1px 8px; }
+
+  .zh { font-size: 28px; line-height: 1.4; font-weight: 700; margin: 0; }
+  .zh-row { border-top: 1px solid var(--line); padding: 10px 0; }
+  .zh-row:first-of-type { border-top: 0; }
+  .zh-en { color: var(--muted); }
+
+  /* Step 7 */
+  .summary { list-style: none; padding: 0; margin: 0; }
+  .summary li { border-top: 1px solid var(--line); padding: 10px 0; margin: 0; }
+  .summary li:first-child { border-top: 0; padding-top: 0; }
+  .summary .val { display: block; font-weight: 700; }
+  .notyet { color: var(--muted); font-weight: 600; }
+  .linkbtn {
+    font: inherit; font-size: 18px; color: var(--accent); background: none; border: 0; padding: 0;
+    min-height: 56px; text-decoration: underline; cursor: pointer;
+  }
+  .q { margin: 0 0 18px; }
+  .q:last-child { margin-bottom: 0; }
+  .q-title { font-weight: 700; margin: 0 0 4px; }
+  .preview {
+    white-space: pre-wrap; font: inherit; font-size: 17px; background: var(--bg); border: 1px solid var(--line);
+    border-radius: 12px; padding: 12px; margin: 10px 0 0;
+  }
+  .status { min-height: 1.5em; font-weight: 700; color: var(--accent); margin-top: 8px; }
+
+  .stepnav { display: grid; grid-template-columns: 1fr 1.6fr; gap: 12px; margin-top: 24px; }
+  .stepnav .btn { margin: 0; }
+  .stepnav .only { grid-column: 1 / -1; }
+  .upnext { text-align: right; color: var(--muted); font-size: 17px; margin-top: 8px; }
+
+  .storage-note {
+    max-width: 640px; margin: 12px auto 0; padding: 12px 16px; background: var(--amber-bg); color: var(--amber-ink);
+    border: 2px solid var(--amber-line); border-radius: 14px; font-size: 17px;
+  }
+  @media (max-width: 400px) {
+    .meter { grid-template-columns: 7.6em auto 1fr; gap: 8px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; scroll-behavior: auto !important; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-row">
+    <p class="stepcount" id="stepCount">Step 1 of 7</p>
+    <button type="button" id="menuBtn" class="menu-btn" aria-expanded="false" aria-controls="menu">☰ All steps</button>
+  </div>
+  <div class="progress" id="progress" role="progressbar" aria-label="How far you are" aria-valuemin="1" aria-valuemax="7" aria-valuenow="1">
+    <div class="progress-fill" id="progressFill"></div>
+  </div>
+  <nav id="menu" class="menu" hidden aria-label="All steps"><ol id="menuList"></ol></nav>
+</header>
+
+<div class="storage-note" id="storageNote" hidden role="status">
+  This phone is not saving your answers. That is OK. Just finish all steps and press the green button at the end.
+</div>
+
+<main id="app"></main>
+
+<script>
+/* =====================================================================
+   TRIP: ALL THE TEXT ON THE PAGE LIVES HERE.
+   ---------------------------------------------------------------------
+   Edit the words below. You do not need to touch the layout code.
+
+   Small writing codes you can use inside any text:
+     {TBD}      shows a grey "To be confirmed" chip
+     **words**  shows words in bold
+   A value that is exactly "TBD" also shows the grey chip.
+
+   Rules for the words: plain English, short sentences, no em dashes.
+   ===================================================================== */
+const TRIP = {
+
+  /* ---------- People ---------- */
+  travellerName: "Papa",
+  helperName: "Raunak",
+  // Raunak's WhatsApp number. Digits only, with country code, no "+" and no spaces.
+  // Example of the format: 919812345678
+  // While this is "TBD", the WhatsApp buttons still work: WhatsApp opens and Papa picks the contact.
+  helperWhatsApp: "TBD",
+
+  // Change this if you ever want everyone's saved answers to start fresh.
+  storageKey: "papa-china-trip-v1",
+
+  /* ---------- Step names (used in the menu and the top bar) ---------- */
+  stepTitles: [
+    "Your trip at a glance",
+    "The conference",
+    "Choose your free days",
+    "Internet in China",
+    "Chinese apps on your iPhone",
+    "Things to know before you go",
+    "Send your choices to Raunak"
+  ],
+
+  /* =================== STEP 1: Trip at a glance =================== */
+  glance: {
+    hello: "Hello Papa! This guide helps you get ready for China.",
+    intro: "Most of the trip is already planned. You only need to decide the free days and set up your phone.",
+    // The colour blocks. "key" links each block to a colour. Do not change the keys.
+    blocks: [
+      { key: "conf", label: "Conference (fixed)", text: "24 to 29 Oct, Huzhou" },
+      { key: "sha",  label: "Shanghai (fixed)",   text: "Nights of 29 and 30 Oct" },
+      { key: "free", label: "Your free days (you choose)", text: "31 Oct to 2 Nov" },
+      { key: "home", label: "Fly home", text: "3 Nov, from Shanghai" }
+    ],
+    days: [
+      { date: "Sat 24 Oct", block: "conf", text: "Reach China. Go to the hotel in Huzhou." },
+      { date: "Sun 25 Oct", block: "conf", text: "Old-town tour and welcome dinner." },
+      { date: "Mon 26 Oct", block: "conf", text: "GAIN meeting. Plant visit and dinner." },
+      { date: "Tue 27 Oct", block: "conf", text: "GAIN talks. Conference opens. Lake cruise." },
+      { date: "Wed 28 Oct", block: "conf", text: "Conference sessions." },
+      { date: "Thu 29 Oct", block: "sha",  text: "Quarry visit, lunch, then train to Shanghai." },
+      { date: "Fri 30 Oct", block: "sha",  text: "See Shanghai." },
+      { date: "Sat 31 Oct", block: "free", text: "Free day. You choose in Step 3." },
+      { date: "Sun 1 Nov",  block: "free", text: "Free day. You choose in Step 3." },
+      { date: "Mon 2 Nov",  block: "free", text: "Free day. You choose in Step 3." },
+      { date: "Tue 3 Nov",  block: "home", text: "Fly home from Shanghai." }
+    ],
+    flights: {
+      icon: "✈️", title: "Your flights",
+      lines: ["Flight to Shanghai: {TBD}", "Flight home on 3 Nov: {TBD}", "Shanghai hotel: {TBD}"]
+    },
+    whatToDo: {
+      icon: "🧭", title: "What you will do in this guide",
+      lines: [
+        "Read about the conference.",
+        "Pick a plan for your free days.",
+        "Get your phone ready for China.",
+        "Send your choices to Raunak on WhatsApp."
+      ]
+    }
+  },
+
+  /* =================== STEP 2: The conference =================== */
+  conference: {
+    intro: "This part is already planned for you. Just read it once.",
+    hotel: {
+      icon: "🏨", title: "Your hotel in Huzhou",
+      lines: ["**Dongwu New Century Grand Hotel**", "No. 555 Laodong Road, Wuxing District, Huzhou."],
+      more: ["Show this address in a taxi if you get lost. Save a photo of it on your phone."]
+    },
+    gettingThere: {
+      icon: "🚄", title: "How to get to Huzhou",
+      lines: [
+        "1. Land at Shanghai **Pudong** airport.",
+        "2. Taxi to **Hongqiao** railway station. About 1 hour.",
+        "3. Fast train to **Huzhou**. About 40 to 50 minutes."
+      ],
+      more: ["\"Fast train\" means high-speed train.",
+             "Book the train on Trip.com. Your passport is your ticket. See Step 6."]
+    },
+    days: [
+      { day: "Sun 25 Oct", items: ["15:00 Old-town tour", "19:00 Welcome dinner"] },
+      { day: "Mon 26 Oct", items: ["GAIN meeting: country introductions", "GAIN meeting: technology and AI", "Evening: plant visit to Zhekuang Heavy Industry, then dinner"] },
+      { day: "Tue 27 Oct", items: ["GAIN talks: responsible sand extraction, manufactured sand, recycling", "Afternoon: opening of the China International Aggregates Conference", "Evening: lake cruise"] },
+      { day: "Wed 28 Oct", items: ["Conference sessions: new energy, smart quarries, digital plants", "Recycling of tailings (mine waste) and demolition waste"] },
+      { day: "Thu 29 Oct", items: ["Morning: quarry visit", "Lunch", "Train to Shanghai"] }
+    ],
+    covered: {
+      icon: "🧾", title: "Who pays for what",
+      lines: [
+        "**Paid by the organisers:** meals and local trips, from 25 Oct evening to 29 Oct lunch.",
+        "**You pay:** flights and hotels."
+      ]
+    },
+    contact: {
+      icon: "📞", title: "Organiser contact",
+      name: "Beibei Xu",
+      email: "xubeibei@zgss.org.cn",
+      phone: "+86 18511023911",
+      lines: ["Contact her for the invitation letter, your diet, or any conference question."]
+    }
+  },
+
+  /* =================== STEP 3: Free days =================== */
+  freeDays: {
+    intro: "China makes most of the world's facade-cleaning drones and robots. Your free days can be a holiday, a business trip, or both.",
+    weekendNote: "Note: 31 Oct is a Saturday and 1 Nov is a Sunday. Some companies may be closed. Fri 30 Oct and Mon 2 Nov are working days.",
+    // Meters go from 0 to 3. One option can have recommended: true.
+    options: [
+      {
+        id: "A", icon: "🏯", title: "A. Easy holiday",
+        subtitle: "Shanghai + day trips",
+        summary: "Stay in one Shanghai hotel. Take two easy day trips by fast train.",
+        plan: [
+          "**Sat 31 Oct:** Day trip to Suzhou. Gardens and canal streets. About 30 min by fast train.",
+          "**Sun 1 Nov:** Day trip to Hangzhou. West Lake. About 1 hour by fast train.",
+          "**Mon 2 Nov:** Rest in Shanghai and pack."
+        ],
+        meters: { effort: 1, cost: 1, business: 0 },
+        goodFor: "Rest and famous sights. No hotel changes.",
+        watchOut: "No business visits. Book train tickets early on Trip.com."
+      },
+      {
+        id: "B", icon: "🤝", title: "B. Business + holiday near Shanghai",
+        subtitle: "Stay in Shanghai, visit 1 or 2 makers",
+        recommended: true,
+        summary: "Stay in Shanghai. Visit 1 or 2 facade-cleaning drone makers. Use the rest of the time to see sights.",
+        plan: [
+          "Many drone makers are in **Jiangsu** and **Zhejiang**. These are the provinces around Shanghai. You can reach them by train or car.",
+          "Use the days the companies are open for visits. Use the other days for sightseeing, like Suzhou or Hangzhou.",
+          "Which companies: {TBD}"
+        ],
+        meters: { effort: 2, cost: 1, business: 2 },
+        goodFor: "Seeing new machines for your business, with some holiday too.",
+        watchOut: "Meetings must be set up this week."
+      },
+      {
+        id: "C", icon: "🚁", title: "C. Business trip to South China",
+        subtitle: "Shenzhen + Guangzhou",
+        summary: "Fly south to see the newest drones and facade-cleaning robots.",
+        plan: [
+          "**Sat 31 Oct:** Fly Shanghai to Shenzhen. About 2.5 hours. Shenzhen is China's drone capital. See the Huaqiangbei electronics market and the DJI flagship store.",
+          "**Sun 1 Nov:** Guangzhou. It is home to facade-cleaning robot makers such as X-Human. How to get from Shenzhen to Guangzhou: {TBD}",
+          "**Mon 2 Nov:** Fly back to Shanghai."
+        ],
+        meters: { effort: 3, cost: 3, business: 3 },
+        goodFor: "Serious research or buying. The most business value.",
+        watchOut: "Two extra flights. Your power bank must have the China **CCC** mark for flights inside China."
+      },
+      {
+        id: "D", icon: "🍵", title: "D. Relaxed lake stay",
+        subtitle: "Hangzhou overnight",
+        summary: "Spend two calm nights by West Lake in Hangzhou.",
+        plan: [
+          "**Sat 31 Oct:** Go to Hangzhou. Stay the night.",
+          "**Sun 1 Nov:** West Lake, Lingyin Temple, tea villages. Stay the night.",
+          "**Mon 2 Nov:** Back to Shanghai."
+        ],
+        meters: { effort: 1, cost: 2, business: 0 },
+        goodFor: "A slow, peaceful break.",
+        watchOut: "No business visits. You change hotels twice."
+      }
+    ],
+    sights: {
+      icon: "🌆", title: "Things to see in Shanghai (30 Oct)",
+      lines: ["Tap the ones you want to see."],
+      list: [
+        "The Bund (old riverside buildings)",
+        "Yu Garden",
+        "Nanjing Road (shopping street)",
+        "Lujiazui skyline and Shanghai Tower",
+        "French Concession (old tree-lined streets)"
+      ]
+    },
+    importWarning: {
+      icon: "⚠️", title: "Important if you plan to buy",
+      lines: [
+        "India restricts bringing in ready-built drones. Check with a customs agent before you buy anything. {TBD}",
+        "Drones used for business in India also need **DGCA** approvals. DGCA is India's air safety office.",
+        "Facade robots that climb or hang from the building are a different category. They may be easier to bring to India. {TBD}"
+      ]
+    },
+    interest: {
+      question: "What are you most interested in?",
+      options: ["Cleaning drones", "Facade robots", "Both", "Just looking"]
+    }
+  },
+
+  /* =================== STEP 4: Internet =================== */
+  internet: {
+    explainer: {
+      icon: "🌐", title: "Why WhatsApp and Google stop working in China",
+      lines: [
+        "China blocks Google, WhatsApp, YouTube and Instagram.",
+        "A **VPN** is an app that sends your internet through another country, so these apps work again.",
+        "There are easier ways than a VPN. See below."
+      ]
+    },
+    pickLine: "Pick one way to get internet:",
+    options: [
+      {
+        id: "esim", icon: "📶", title: "Travel eSIM with built-in unblocking", recommended: true,
+        lines: [
+          "Examples: **Holafly** or **Nomad**. About US$33 to 37 for 10 days, unlimited data. {TBD}",
+          "WhatsApp and Google work with no extra setup."
+        ],
+        more: [
+          "An **eSIM** is a digital SIM. You download it into your phone. No plastic card is needed.",
+          "Your iPhone 13 Pro supports eSIM."
+        ]
+      },
+      {
+        id: "roaming", icon: "🇮🇳", title: "Indian roaming pack (Airtel or Jio)",
+        lines: [
+          "Example: Airtel's 10-day pack, ₹1,298, 6GB data. {TBD}",
+          "Check that China is included."
+        ],
+        more: [
+          "Works without a VPN, because your internet comes through India.",
+          "Simple, but the data is limited. 6GB can run out if you use video calls a lot."
+        ]
+      },
+      {
+        id: "vpn", icon: "🛡️", title: "VPN app",
+        lines: [
+          "Must be installed and tested in India. You cannot download it inside China.",
+          "Often slow or blocked. Not good as your only plan."
+        ]
+      }
+    ],
+    bestSetup: {
+      icon: "✅", title: "Best setup",
+      lines: [
+        "Keep your **Indian SIM ON**, so bank OTP messages reach you.",
+        "Use the **travel eSIM** for internet.",
+        "Your iPhone can hold both at the same time."
+      ],
+      more: ["OTP means the one-time code your bank sends by SMS when you pay."]
+    }
+  },
+
+  /* =================== STEP 5: Chinese apps =================== */
+  apps: {
+    mustDo: {
+      icon: "🏠", title: "Do this at home in India, before you fly",
+      lines: ["Take your time. Tick each step when it is done. If you get stuck, press the WhatsApp button at the bottom."]
+    },
+    explainer: {
+      icon: "📱", title: "Why some apps are missing",
+      lines: [
+        "Two important apps, **Alipay** (to pay) and **Amap** (maps), are banned in India. So they do not appear in the Indian App Store.",
+        "Even in China they will not appear. The App Store follows your Apple account's country, not where you are standing.",
+        "The fix: a second Apple account set to Hong Kong or the USA."
+      ]
+    },
+    walkthrough: [
+      { title: "Sign out of the App Store only",
+        text: "Open **Settings**. Tap your name. Tap **Media & Purchases**. Tap **Sign Out**.",
+        note: "This signs out of the App Store only. Your photos, iCloud and WhatsApp stay as they are." },
+      { title: "Make a new Apple Account",
+        text: "Open the **App Store**. Create a new Apple Account. Choose region **Hong Kong** (or United States).",
+        note: "When it asks for payment, choose **None**." },
+      { title: "Use a new email address",
+        text: "Use an email address that you have not used for Apple before.",
+        note: "Write down this email and password somewhere safe." },
+      { title: "Download Alipay and Amap",
+        text: "Search the App Store for **Alipay** and **Amap**. Download both." },
+      { title: "Go back to your normal account",
+        text: "Go to **Settings › Media & Purchases**. Sign in to your normal Indian account again.",
+        note: "The new apps stay on your phone." },
+      { title: "Set up Alipay",
+        text: "Open **Alipay**. Sign up with your phone number. Add a **Visa** or **Mastercard** credit card. Try one small payment." }
+    ],
+    warnings: [
+      { icon: "💬", title: "WeChat may not work",
+        lines: ["WeChat may not work with an Indian +91 number. Do not depend on it.", "Ask business contacts to use WhatsApp or email."] },
+      { icon: "", title: "Apple Pay will not help",
+        lines: ["Apple Pay does not work for this. It is not available in India."] }
+    ],
+    otherApps: {
+      icon: "🧰", title: "Other apps to install",
+      list: [
+        { name: "Trip.com", use: "Trains and hotels, with English help.", where: "Indian App Store" },
+        { name: "Holafly or Nomad", use: "Internet (the travel eSIM).", where: "Indian App Store" },
+        { name: "Apple Translate", use: "Download Mandarin to use offline. Camera mode reads menus.", where: "Already on your iPhone" },
+        { name: "Apple Maps", use: "Works in China.", where: "Already on your iPhone" },
+        { name: "Airtel or Jio app", use: "Roaming pack.", where: "Indian App Store" }
+      ]
+    },
+    helpButton: "Ask Raunak for help on WhatsApp",
+    helpMessage: "Hi Raunak, I need help with the China phone setup (Step 5)."
+  },
+
+  /* =================== STEP 6: Things to know =================== */
+  know: {
+    intro: "Tap any card to read more.",
+    cards: [
+      { icon: "🛂", title: "Visa", tone: "red",
+        lines: ["Indians need a China visa."],
+        more: ["The organisers can send an invitation letter. Ask Beibei Xu (see Step 2)."] },
+      { icon: "💳", title: "Money",
+        lines: ["China barely uses cash or cards. People pay with phones."],
+        more: [
+          "**Your plan:**",
+          "1. Alipay with a credit card.",
+          "2. A forex card as backup.",
+          "3. ¥3,000 to 4,000 in cash.",
+          "**Turn on international use** for all your cards before you fly."
+        ] },
+      { icon: "🚆", title: "Trains",
+        lines: ["Book on Trip.com with your passport."],
+        more: [
+          "The official 12306 app takes 3 to 5 days to approve foreigners. So use Trip.com.",
+          "Your passport is your ticket at the station."
+        ] },
+      { icon: "🥗", title: "Food",
+        lines: ["If you are vegetarian, \"vegetable\" dishes are often cooked in lard (pig fat) or meat broth."],
+        more: ["Tell the organisers in advance.", "Show the Chinese phone note below to the waiter."] },
+      { icon: "🧥", title: "Weather",
+        lines: ["15 to 23°C."],
+        more: ["The lakeside feels colder. The hills are 2 to 3°C cooler.", "Bring a windproof jacket."] },
+      { icon: "🎒", title: "Packing",
+        lines: ["Small list. Tap to see it all."],
+        moreList: [
+          "Noise-cancelling earbuds",
+          "Power bank, 10,000 to 20,000 mAh, with the capacity printed on it. Cabin bag only.",
+          "Universal plug adapter",
+          "Passport copies",
+          "Medicines",
+          "No laptop needed"
+        ] },
+      { icon: "🕑", title: "Time",
+        lines: ["China is 2.5 hours ahead of India."],
+        more: ["When it is 12:00 noon in India, it is 14:30 in China."] },
+      { icon: "🚨", title: "Emergency numbers", tone: "red",
+        lines: ["Police: **110**", "Ambulance: **120**"] }
+    ],
+    phrases: {
+      icon: "🗣️", title: "Show this to the waiter",
+      lines: ["Save a screenshot of this card. Show it when you order food."],
+      list: [
+        { zh: "我吃素", en: "I am vegetarian" },
+        { zh: "不吃肉、鱼、虾", en: "No meat, fish, shrimp" },
+        { zh: "不要猪油，不要肉汤", en: "No lard, no meat broth" }
+      ]
+    }
+  },
+
+  /* =================== STEP 7: Send =================== */
+  // "short" is the label used in the WhatsApp message.
+  send: {
+    intro: "Check your choices. Answer a few quick questions. Then press the green button.",
+    questions: [
+      { id: "veg",     short: "Vegetarian",            q: "Are you vegetarian?", options: ["Yes", "No"] },
+      { id: "eggs",    short: "Eats eggs",             q: "Do you eat eggs?", options: ["Yes", "No"] },
+      { id: "present", short: "Presenting at conference", q: "Will you present at the conference?", options: ["Yes", "No", "Not sure"] },
+      { id: "visa",    short: "Visa done",             q: "Is your visa done?", options: ["Yes", "In process", "Not started"] },
+      { id: "network", short: "Mobile network",        q: "Which mobile network do you use?", options: ["Airtel", "Jio", "Other"] }
+    ],
+    checklist: [
+      "Visa",
+      "Conference registration confirmed",
+      "Hotel booked",
+      "eSIM installed",
+      "Alipay working",
+      "Cash bought",
+      "Cards turned on for international use",
+      "Trains booked"
+    ],
+    sendButton: "Send my choices to Raunak on WhatsApp",
+    copyButton: "Copy summary",
+    messageTitle: "Papa's China trip: my choices"
+  }
+};
+/* ======================= END OF TRIP CONTENT ======================= */
+
+
+/* ----- Saving answers (works even if the phone blocks storage) ----- */
+const DEFAULT_STATE = {
+  step: 1, freeDays: "", sights: {}, interest: "", internet: "",
+  appDone: {}, answers: {}, checklist: {}
+};
+const storage = {
+  ok: true,
+  load() {
+    try {
+      const t = "__t";
+      localStorage.setItem(t, "1"); localStorage.removeItem(t);
+      const raw = localStorage.getItem(TRIP.storageKey);
+      return raw ? JSON.parse(raw) : null;
+    } catch (e) { this.ok = false; return null; }
+  },
+  save(s) {
+    if (!this.ok) return;
+    try { localStorage.setItem(TRIP.storageKey, JSON.stringify(s)); }
+    catch (e) { this.ok = false; showStorageNote(); }
+  }
+};
+let state = Object.assign({}, DEFAULT_STATE, storage.load() || {});
+["sights", "appDone", "answers", "checklist"].forEach(k => {
+  if (!state[k] || typeof state[k] !== "object") state[k] = {};
+});
+function showStorageNote() { document.getElementById("storageNote").hidden = false; }
+if (!storage.ok) showStorageNote();
+
+/* ----- Small helpers ----- */
+const TOTAL = TRIP.stepTitles.length;
+function esc(s) {
+  return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+const CHIP = '<span class="tbd">To be confirmed</span>';
+function t(s) {
+  if (s === "TBD") return CHIP;
+  return esc(s).replace(/\{TBD\}/g, CHIP).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+}
+function plain(s) { return String(s).replace(/\*\*/g, "").replace(/\s*\{TBD\}/g, " (to be confirmed)"); }
+function paras(lines) { return (lines || []).map(l => `<p>${t(l)}</p>`).join(""); }
+function more(lines, list) {
+  if (!(lines && lines.length) && !(list && list.length)) return "";
+  const body = paras(lines) + (list ? `<ul>${list.map(i => `<li>${t(i)}</li>`).join("")}</ul>` : "");
+  return `<details class="more"><summary>Tell me more</summary><div class="inner">${body}</div></details>`;
+}
+function card(c, extra) {
+  const tone = c.tone ? " " + c.tone : "";
+  const tag = c.tone === "red" ? '<span class="tag red">Must do</span>' : c.tone === "amber" ? '<span class="tag amber">Important</span>' : "";
+  const icon = c.icon ? `<span class="emoji" aria-hidden="true">${c.icon}</span>` : "";
+  return `<article class="card${tone}">${tag}<h2 class="card-title">${icon}<span>${t(c.title)}</span></h2>
+    ${paras(c.lines)}${extra || ""}${more(c.more, c.moreList)}</article>`;
+}
+const WORDS = ["None", "Low", "Medium", "High"];
+function meter(label, n) {
+  let dots = "";
+  for (let i = 0; i < 3; i++) dots += `<span class="dot${i < n ? " on" : ""}"></span>`;
+  return `<div class="meter"><span class="label">${label}</span>
+    <span class="dots" role="img" aria-label="${label}: ${n} out of 3">${dots}</span>
+    <span class="meter-word" aria-hidden="true">${WORDS[n]}</span></div>`;
+}
+function pills(key, options) {
+  return `<div class="pills">${options.map(o =>
+    `<button type="button" class="pill" data-key="${key}" data-val="${esc(o)}" aria-pressed="false">${esc(o)}</button>`).join("")}</div>`;
+}
+function ticks(group, items) {
+  return `<ul class="ticks">${items.map(i =>
+    `<li><button type="button" class="tick" data-multi="${group}" data-val="${esc(i)}" aria-pressed="false"><span class="box" aria-hidden="true"></span><span>${t(i)}</span></button></li>`).join("")}</ul>`;
+}
+function waNumber() {
+  const n = String(TRIP.helperWhatsApp).replace(/\D/g, "");
+  return TRIP.helperWhatsApp === "TBD" ? "" : n;
+}
+function waLink(text) { return "https://wa.me/" + waNumber() + "?text=" + encodeURIComponent(text); }
+
+/* ----- Step builders ----- */
+function stepHead(n) {
+  return `<h1 id="h-${n}" tabindex="-1">${esc(TRIP.stepTitles[n - 1])}</h1>`;
+}
+
+function buildStep1() {
+  const g = TRIP.glance;
+  const legend = g.blocks.map(b => `<div class="legend-item"><span class="swatch bg-${b.key}" aria-hidden="true"></span>
+    <div><strong>${t(b.label)}</strong><br>${t(b.text)}</div></div>`).join("");
+  const labels = Object.fromEntries(g.blocks.map(b => [b.key, b.label.replace(/\s*\(.*\)/, "")]));
+  const days = g.days.map(d => `<li class="day b-${d.block}"><span class="day-date">${t(d.date)}</span>
+    <span><span class="day-label">${esc(labels[d.block])}</span>${t(d.text)}</span></li>`).join("");
+  return `<p class="lead"><strong>${t(g.hello)}</strong></p><p class="lead">${t(g.intro)}</p>
+    <article class="card"><h2 class="card-title"><span class="emoji" aria-hidden="true">🗓️</span><span>24 Oct to 3 Nov</span></h2>
+      <div class="legend">${legend}</div><ol class="days" aria-label="Day by day">${days}</ol></article>
+    ${card(g.whatToDo)}${card(g.flights)}`;
+}
+
+function buildStep2() {
+  const c = TRIP.conference;
+  const days = c.days.map(d => `<details class="more"><summary>${esc(d.day)}</summary>
+    <div class="inner"><ul>${d.items.map(i => `<li>${t(i)}</li>`).join("")}</ul></div></details>`).join("");
+  const ct = c.contact;
+  const tel = ct.phone.replace(/[^\d+]/g, "");
+  const contactExtra = `<p><strong>${esc(ct.name)}</strong></p>
+    <a class="btn" href="mailto:${esc(ct.email)}">✉️ Email ${esc(ct.email)}</a>
+    <a class="btn" href="tel:${esc(tel)}">📞 Call ${esc(ct.phone)}</a>`;
+  return `<p class="lead">${t(c.intro)}</p>
+    ${card(c.hotel)}${card(c.gettingThere)}
+    <article class="card"><h2 class="card-title"><span class="emoji" aria-hidden="true">📋</span><span>Day by day</span></h2>
+      <p>Tap a day to see the plan.</p>${days}</article>
+    ${card(c.covered)}
+    ${card({ icon: ct.icon, title: ct.title, lines: [] }, contactExtra + `<p style="margin-top:12px">${t(ct.lines[0])}</p>`)}`;
+}
+
+function buildStep3() {
+  const f = TRIP.freeDays;
+  const opts = f.options.map(o => `<article class="card option" data-option="${o.id}">
+      ${o.recommended ? '<span class="tag rec">★ Recommended</span>' : ""}
+      <h2 class="card-title"><span class="emoji" aria-hidden="true">${o.icon}</span><span>${t(o.title)}</span></h2>
+      <p><strong>${t(o.subtitle)}</strong></p><p>${t(o.summary)}</p>
+      <div class="meters">${meter("Effort", o.meters.effort)}${meter("Cost", o.meters.cost)}${meter("Business value", o.meters.business)}</div>
+      <p><span class="label">Good for:</span> ${t(o.goodFor)}</p>
+      <p><span class="label">Watch out:</span> ${t(o.watchOut)}</p>
+      <details class="more"><summary>Tell me more: day by day</summary><div class="inner"><ul class="plan">${o.plan.map(p => `<li>${t(p)}</li>`).join("")}</ul></div></details>
+      <button type="button" class="btn choose" data-key="freeDays" data-val="${o.id}" aria-pressed="false">
+        <span class="off-txt">Choose this</span><span class="on-txt">✓ You chose this</span></button>
+    </article>`).join("");
+  const s = f.sights;
+  const imp = Object.assign({ tone: "amber" }, f.importWarning);
+  const interest = `<h3 style="margin-top:14px">${t(f.interest.question)}</h3>${pills("interest", f.interest.options)}`;
+  return `<p class="lead">${t(f.intro)}</p>
+    <p>Pick <strong>one</strong> plan. Tap "Tell me more" to see each day.</p>
+    ${card({ icon: "📅", title: "Good to know", lines: [f.weekendNote] })}
+    ${opts}
+    ${card(s, ticks("sights", s.list))}
+    ${card(imp, interest)}`;
+}
+
+function buildStep4() {
+  const n = TRIP.internet;
+  const opts = n.options.map(o => `<article class="card option" data-option="${o.id}">
+      ${o.recommended ? '<span class="tag rec">★ Recommended</span>' : ""}
+      <h2 class="card-title"><span class="emoji" aria-hidden="true">${o.icon}</span><span>${t(o.title)}</span></h2>
+      ${paras(o.lines)}${more(o.more)}
+      <button type="button" class="btn choose" data-key="internet" data-val="${o.id}" aria-pressed="false">
+        <span class="off-txt">Choose this</span><span class="on-txt">✓ You chose this</span></button>
+    </article>`).join("");
+  return `${card(n.explainer)}<p class="lead"><strong>${t(n.pickLine)}</strong></p>${opts}${card(n.bestSetup)}`;
+}
+
+function buildStep5() {
+  const a = TRIP.apps;
+  const walk = a.walkthrough.map((w, i) => `<article class="card">
+      <div class="walk"><span class="num" aria-hidden="true">${i + 1}</span>
+        <div><h2>Step ${i + 1}: ${t(w.title)}</h2><p>${t(w.text)}</p>${w.note ? `<p>${t(w.note)}</p>` : ""}</div>
+        <div class="walk-done"><button type="button" class="btn done" data-multi="appDone" data-val="${i + 1}" aria-pressed="false">
+          <span class="off-txt">Tap when done</span><span class="on-txt">✓ Done</span></button></div>
+      </div></article>`).join("");
+  const warns = a.warnings.map(w => card(Object.assign({ tone: "amber", icon: w.icon || "⚠️" }, w))).join("");
+  const apps = `<ul class="applist">${a.otherApps.list.map(x =>
+    `<li><strong>${t(x.name)}</strong><br>${t(x.use)}<br><span class="where">${t(x.where)}</span></li>`).join("")}</ul>`;
+  return `${card(Object.assign({ tone: "red" }, a.mustDo))}${card(a.explainer)}
+    <h2 style="margin:20px 0 12px">Follow these 6 steps</h2>${walk}${warns}
+    ${card(a.otherApps, apps)}
+    <a class="btn green" id="helpBtn" href="${esc(waLink(a.helpMessage))}" target="_blank" rel="noopener">💬 ${esc(a.helpButton)}</a>
+    ${waNumber() ? "" : `<p style="margin-top:8px">Raunak's number: ${CHIP} WhatsApp will ask you to pick the contact.</p>`}`;
+}
+
+function buildStep6() {
+  const k = TRIP.know;
+  const cards = k.cards.map(c => card(c)).join("");
+  const ph = k.phrases;
+  const rows = ph.list.map(p => `<div class="zh-row"><p class="zh" lang="zh-CN">${esc(p.zh)}</p><p class="zh-en">${t(p.en)}</p></div>`).join("");
+  return `<p class="lead">${t(k.intro)}</p>${cards}${card(ph, rows)}`;
+}
+
+function buildStep7() {
+  const s = TRIP.send;
+  const qs = s.questions.map(q => `<div class="q"><p class="q-title" id="q-${q.id}">${t(q.q)}</p>
+    <div role="group" aria-labelledby="q-${q.id}">${pills("answers." + q.id, q.options)}</div></div>`).join("");
+  return `<p class="lead">${t(s.intro)}</p>
+    <article class="card"><h2 class="card-title"><span class="emoji" aria-hidden="true">📝</span><span>Your choices</span></h2>
+      <ul class="summary" id="summaryList"></ul></article>
+    <article class="card"><h2 class="card-title"><span class="emoji" aria-hidden="true">❓</span><span>Quick questions</span></h2>${qs}</article>
+    <article class="card"><h2 class="card-title"><span class="emoji" aria-hidden="true">🧳</span><span>Before you fly</span></h2>
+      <p>Tick each one when it is done.</p>${ticks("checklist", s.checklist)}</article>
+    <a class="btn green" id="sendBtn" href="#" target="_blank" rel="noopener">💬 ${esc(s.sendButton)}</a>
+    ${waNumber() ? "" : `<p style="margin-top:8px">Raunak's number: ${CHIP} WhatsApp will ask you to pick the contact.</p>`}
+    <button type="button" class="btn" id="copyBtn">📋 ${esc(s.copyButton)}</button>
+    <p class="status" id="copyStatus" role="status" aria-live="polite"></p>
+    <details class="more"><summary>See the message that will be sent</summary><div class="preview" id="preview"></div></details>`;
+}
+
+const BUILDERS = [buildStep1, buildStep2, buildStep3, buildStep4, buildStep5, buildStep6, buildStep7];
+
+/* ----- Summary text for WhatsApp ----- */
+function choiceLabel(list, id, field) {
+  const o = list.find(x => x.id === id);
+  return o ? plain(o[field || "title"]) : "";
+}
+function summaryRows() {
+  const f = TRIP.freeDays, s = TRIP.send;
+  const sights = f.sights.list.filter(x => state.sights[x]).map(x => x.replace(/\s*\(.*\)/, ""));
+  const rows = [
+    { label: "Free days (31 Oct to 2 Nov)", value: choiceLabel(f.options, state.freeDays), step: 3 },
+    { label: "Shanghai sights", value: sights.join(", "), step: 3 },
+    { label: "Business interest", value: state.interest, step: 3 },
+    { label: "Internet", value: choiceLabel(TRIP.internet.options, state.internet), step: 4 }
+  ];
+  s.questions.forEach(q => rows.push({ label: q.short || q.q, value: state.answers[q.id] || "", step: 7 }));
+  return rows;
+}
+function buildMessage() {
+  const s = TRIP.send;
+  const lines = [s.messageTitle, ""];
+  summaryRows().forEach(r => lines.push(`${r.label}: ${r.value || "Not answered yet"}`));
+  const done = s.checklist.filter(c => state.checklist[c]);
+  const todo = s.checklist.filter(c => !state.checklist[c]);
+  const appSteps = Object.keys(state.appDone).filter(k => state.appDone[k]).length;
+  lines.push("", `Phone setup (Step 5): ${appSteps} of ${TRIP.apps.walkthrough.length} steps done`);
+  lines.push("", "Before you fly, done:");
+  lines.push(done.length ? done.map(d => "✅ " + d).join("\n") : "Nothing ticked yet");
+  lines.push("", "Still to do:");
+  lines.push(todo.length ? todo.map(d => "⬜ " + d).join("\n") : "All done!");
+  return lines.join("\n");
+}
+function renderSummary() {
+  const ul = document.getElementById("summaryList");
+  if (!ul) return;
+  ul.innerHTML = summaryRows().slice(0, 4).map(r => `<li>${esc(r.label)}
+    ${r.value ? `<span class="val">${esc(r.value)}</span>`
+      : `<span class="val notyet">Not chosen yet</span><button type="button" class="linkbtn" data-go="${r.step}">Go to Step ${r.step}</button>`}</li>`).join("");
+  const msg = buildMessage();
+  document.getElementById("preview").textContent = msg;
+  document.getElementById("sendBtn").href = waLink(msg);
+}
+
+/* ----- Keep buttons in sync with saved answers ----- */
+function getVal(key) {
+  return key.split(".").reduce((o, k) => (o ? o[k] : undefined), state);
+}
+function setVal(key, val) {
+  const parts = key.split(".");
+  let o = state;
+  for (let i = 0; i < parts.length - 1; i++) o = o[parts[i]];
+  o[parts[parts.length - 1]] = val;
+}
+function refresh() {
+  document.querySelectorAll("[data-key]").forEach(b => {
+    const on = getVal(b.dataset.key) === b.dataset.val;
+    b.setAttribute("aria-pressed", on ? "true" : "false");
+    const opt = b.closest(".option");
+    if (opt && b.classList.contains("choose")) opt.classList.toggle("selected", on);
+  });
+  document.querySelectorAll("[data-multi]").forEach(b => {
+    b.setAttribute("aria-pressed", state[b.dataset.multi][b.dataset.val] ? "true" : "false");
+  });
+  renderSummary();
+}
+
+/* ----- Moving between steps ----- */
+function go(n, focus) {
+  n = Math.min(TOTAL, Math.max(1, n | 0));
+  state.step = n;
+  storage.save(state);
+  document.querySelectorAll(".step").forEach(s => { s.hidden = s.dataset.step !== String(n); });
+  document.getElementById("stepCount").textContent = `Step ${n} of ${TOTAL}`;
+  const p = document.getElementById("progress");
+  p.setAttribute("aria-valuenow", n);
+  p.setAttribute("aria-valuetext", `Step ${n} of ${TOTAL}`);
+  document.getElementById("progressFill").style.width = (n / TOTAL * 100) + "%";
+  document.querySelectorAll("#menuList button").forEach(b => {
+    if (b.dataset.go === String(n)) b.setAttribute("aria-current", "step"); else b.removeAttribute("aria-current");
+  });
+  closeMenu();
+  window.scrollTo(0, 0);
+  if (focus) { const h = document.getElementById("h-" + n); if (h) h.focus({ preventScroll: true }); }
+  if (location.hash !== "#step" + n) history.replaceState(null, "", "#step" + n);
+}
+function closeMenu() {
+  document.getElementById("menu").hidden = true;
+  document.getElementById("menuBtn").setAttribute("aria-expanded", "false");
+}
+
+/* ----- Build the page ----- */
+function build() {
+  const app = document.getElementById("app");
+  app.innerHTML = BUILDERS.map((fn, i) => {
+    const n = i + 1;
+    const back = n > 1 ? `<button type="button" class="btn" data-go="${n - 1}">← Back</button>` : "";
+    const next = n < TOTAL
+      ? `<button type="button" class="btn primary${n === 1 ? " only" : ""}" data-go="${n + 1}">Next →</button>`
+      : `<button type="button" class="btn" data-go="1">Back to start</button>`;
+    const upnext = n < TOTAL ? `<p class="upnext">Next: ${esc(TRIP.stepTitles[n])}</p>` : "";
+    return `<section class="step" id="s${n}" data-step="${n}" aria-labelledby="h-${n}" hidden>
+      ${stepHead(n)}${fn()}<div class="stepnav">${back}${next}</div>${upnext}</section>`;
+  }).join("");
+  document.getElementById("menuList").innerHTML = TRIP.stepTitles.map((s, i) =>
+    `<li><button type="button" data-go="${i + 1}">${i + 1}. ${esc(s)}</button></li>`).join("");
+}
+
+document.addEventListener("click", async e => {
+  const el = e.target.closest("button, a");
+  if (!el) return;
+  if (el.id === "menuBtn") {
+    const m = document.getElementById("menu");
+    m.hidden = !m.hidden;
+    el.setAttribute("aria-expanded", m.hidden ? "false" : "true");
+    return;
+  }
+  if (el.dataset.go) { go(+el.dataset.go, true); return; }
+  if (el.dataset.key) {
+    setVal(el.dataset.key, el.dataset.val);
+    storage.save(state); refresh(); return;
+  }
+  if (el.dataset.multi) {
+    const g = state[el.dataset.multi];
+    g[el.dataset.val] = !g[el.dataset.val];
+    storage.save(state); refresh(); return;
+  }
+  if (el.id === "sendBtn") { el.href = waLink(buildMessage()); return; }
+  if (el.id === "copyBtn") {
+    const ok = await copyText(buildMessage());
+    const st = document.getElementById("copyStatus");
+    st.textContent = ok ? "✓ Copied. Now paste it in WhatsApp." : "Could not copy. Open \"See the message\" below and copy it by hand.";
+  }
+});
+
+async function copyText(s) {
+  try { await navigator.clipboard.writeText(s); return true; }
+  catch (e) {
+    const ta = document.createElement("textarea");
+    ta.value = s; ta.setAttribute("readonly", "");
+    ta.style.position = "fixed"; ta.style.top = "0"; ta.style.opacity = "0";
+    document.body.appendChild(ta); ta.select();
+    let ok = false;
+    try { ok = document.execCommand("copy"); } catch (e2) {}
+    ta.remove();
+    return ok;
+  }
+}
+
+window.addEventListener("hashchange", () => {
+  const m = location.hash.match(/^#step(\d)$/);
+  if (m && +m[1] !== state.step) go(+m[1], true);
+});
+
+build();
+refresh();
+const fromHash = location.hash.match(/^#step(\d)$/);
+go(fromHash ? +fromHash[1] : state.step, false);
+</script>
+</body>
+</html>
