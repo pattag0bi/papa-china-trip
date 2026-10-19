@@ -1,7 +1,7 @@
 # Papa's China Trip
 
 A one-page, phone-friendly guide for Papa's China trip (24 Oct to 3 Nov 2026).
-Everything is in `index.html`: no build step, no internet libraries, nothing to install.
+Everything is in `index.html`, plus place photos in the `img/` folder. No build step, nothing to install.
 
 ## Before you send it: 2 things to fill in
 
@@ -13,7 +13,8 @@ Open `index.html` in any text editor and search for `TRIP`.
 2. **Anything marked `{TBD}`.** Search for `TBD`. Each one shows a grey "To be confirmed"
    chip on the page. Replace it with the real fact, or leave it if still unknown.
    Current TBDs: flights, Shanghai hotel, which companies to visit (Option B),
-   Shenzhen to Guangzhou transport (Option C), drone/robot import rules, eSIM and Airtel prices.
+   Shenzhen to Guangzhou transport (Option C), drone/robot import rules, eSIM, Airtel and VPN prices,
+   most entry ticket prices, and the Indian Consulate's after-hours number.
 
 ## How to edit the TRIP object
 
@@ -24,11 +25,12 @@ All words on the page live in one JavaScript object called `TRIP`, at the top of
 |---|---|
 | `glance` | 1. Your trip at a glance |
 | `conference` | 2. The conference |
-| `freeDays` | 3. Choose your free days |
-| `internet` | 4. Internet in China |
-| `apps` | 5. Chinese apps on your iPhone |
-| `know` | 6. Things to know before you go |
-| `send` | 7. Send your choices to Raunak |
+| `places` | 3. Places you can visit (photos, distance, what to expect) |
+| `freeDays` | 4. Choose your free days (plans A to G) |
+| `internet` | 5. Internet in China (and VPN suggestions in `vpns`) |
+| `apps` | 6. Chinese apps on your iPhone |
+| `know` | 7. Things to know before you go (and `keepInMind`) |
+| `send` | 8. Send your choices to Raunak |
 
 Rules:
 
@@ -40,6 +42,13 @@ Rules:
 - Option meters (`effort`, `cost`, `business`) go from 0 to 3.
 - To add a checklist item, add a line to `send.checklist`. It shows up in the WhatsApp message too.
 - Keep copy plain: short sentences, no em dashes, and no jargon without an explanation.
+
+### Photos
+
+Place photos live in `img/` and come from Wikimedia Commons under open licences
+(CC BY, CC BY-SA, CC0). The licences require credit, which is shown under
+"Photo credits" at the end of Step 3 (`places.credits`). If you swap a photo, update its credit too.
+To add a place, add an item to a group in `places.groups` with its own `id` and photo.
 
 If you change the structure a lot and Papa's old answers look wrong, change
 `storageKey` (for example to `"papa-china-trip-v2"`) to start fresh.
@@ -65,12 +74,12 @@ The link stays the same.
 ### Option 2: GitHub Pages
 
 1. Create a new public repository on GitHub, for example `papa-china-trip`.
-2. Upload `index.html` (Add file › Upload files › Commit).
+2. Upload `index.html` and the `img` folder (Add file › Upload files › Commit).
 3. Go to **Settings › Pages**. Under "Branch", pick `main` and `/ (root)`, then Save.
 4. After a minute your link is `https://<your-username>.github.io/papa-china-trip/`.
 5. Send that link to Papa on WhatsApp.
 
-To update, upload the new `index.html` again. The link stays the same.
+To update, upload the changed files again. The link stays the same.
 
 Note: a public link can be opened by anyone who has it. The page includes the
 organiser's contact details, so share the link only with Papa.

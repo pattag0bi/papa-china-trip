@@ -238,7 +238,19 @@
   .zh-row:first-of-type { border-top: 0; }
   .zh-en { color: var(--muted); }
 
-  /* Step 7 */
+  /* Places */
+  .group-title { font-size: 26px; margin: 28px 0 4px; }
+  .photo { display: block; width: 100%; max-width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 12px; margin: 0 0 12px; background: var(--line); }
+  .place-name { font-size: 23px; margin: 0 0 8px; }
+  .zh-name { display: block; font-size: 19px; font-weight: 600; color: var(--muted); }
+  .facts { margin: 0 0 12px; display: grid; gap: 8px; }
+  .facts > div { display: grid; grid-template-columns: 8.2em 1fr; gap: 8px; border-top: 1px solid var(--line); padding-top: 8px; }
+  .facts dt { font-weight: 700; }
+  .facts dd { margin: 0; min-width: 0; }
+  .facts .dots { vertical-align: -3px; margin-right: 6px; }
+  @media (max-width: 400px) { .facts > div { grid-template-columns: 1fr; gap: 2px; } }
+
+  /* Step 8 */
   .summary { list-style: none; padding: 0; margin: 0; }
   .summary li { border-top: 1px solid var(--line); padding: 10px 0; margin: 0; }
   .summary li:first-child { border-top: 0; padding-top: 0; }
@@ -317,12 +329,13 @@ const TRIP = {
   helperWhatsApp: "TBD",
 
   // Change this if you ever want everyone's saved answers to start fresh.
-  storageKey: "papa-china-trip-v1",
+  storageKey: "papa-china-trip-v2",
 
   /* ---------- Step names (used in the menu and the top bar) ---------- */
   stepTitles: [
     "Your trip at a glance",
     "The conference",
+    "Places you can visit",
     "Choose your free days",
     "Internet in China",
     "Chinese apps on your iPhone",
@@ -349,9 +362,9 @@ const TRIP = {
       { date: "Wed 28 Oct", block: "conf", text: "Conference sessions." },
       { date: "Thu 29 Oct", block: "sha",  text: "Quarry visit, lunch, then train to Shanghai." },
       { date: "Fri 30 Oct", block: "sha",  text: "See Shanghai." },
-      { date: "Sat 31 Oct", block: "free", text: "Free day. You choose in Step 3." },
-      { date: "Sun 1 Nov",  block: "free", text: "Free day. You choose in Step 3." },
-      { date: "Mon 2 Nov",  block: "free", text: "Free day. You choose in Step 3." },
+      { date: "Sat 31 Oct", block: "free", text: "Free day. You choose in Step 4." },
+      { date: "Sun 1 Nov",  block: "free", text: "Free day. You choose in Step 4." },
+      { date: "Mon 2 Nov",  block: "free", text: "Free day. You choose in Step 4." },
       { date: "Tue 3 Nov",  block: "home", text: "Fly home from Shanghai." }
     ],
     flights: {
@@ -362,6 +375,7 @@ const TRIP = {
       icon: "🧭", title: "What you will do in this guide",
       lines: [
         "Read about the conference.",
+        "Look at places you can visit, with photos.",
         "Pick a plan for your free days.",
         "Get your phone ready for China.",
         "Send your choices to Raunak on WhatsApp."
@@ -385,7 +399,7 @@ const TRIP = {
         "3. Fast train to **Huzhou**. About 40 to 50 minutes."
       ],
       more: ["\"Fast train\" means high-speed train.",
-             "Book the train on Trip.com. Your passport is your ticket. See Step 6."]
+             "Book the train on Trip.com. Your passport is your ticket. See Step 7."]
     },
     days: [
       { day: "Sun 25 Oct", items: ["15:00 Old-town tour", "19:00 Welcome dinner"] },
@@ -410,7 +424,189 @@ const TRIP = {
     }
   },
 
-  /* =================== STEP 3: Free days =================== */
+  /* =================== STEP 3: Places you can visit =================== */
+  // Each place: photo in the img/ folder, distance, travel, walking level (1 to 3).
+  // Travel times are from travel guides and change. Check on Trip.com before booking.
+  places: {
+    intro: "Here are the best places near Shanghai. Look at the photos. Tap \"I'd like to go\" on the ones you like. Then pick a plan in the next step.",
+    howTo: {
+      icon: "💡", title: "How to read these cards",
+      lines: [
+        "**Distance** is from central Shanghai.",
+        "**Walking** tells you how tiring it is: Low, Medium or High.",
+        "Fast trains leave from Shanghai **Hongqiao** station unless it says otherwise."
+      ]
+    },
+    groups: [
+      { title: "In Shanghai city", note: "No long travel. Good for 30 Oct, or any free day.",
+        items: [
+          { id: "bund", name: "The Bund", zh: "外滩", img: "img/bund.jpg",
+            alt: "Old stone buildings along the river at the Bund in Shanghai",
+            distance: "In the city centre",
+            travel: "Taxi or metro to East Nanjing Road station.",
+            time: "1 to 2 hours", walking: 1, entry: "Free",
+            expect: [
+              "A long riverside walk lined with grand old European-style buildings.",
+              "Across the river you see the tall towers of Lujiazui.",
+              "Go in the evening. The buildings and towers are lit up and it looks beautiful."
+            ],
+            tips: ["Very crowded on weekend evenings. Keep your phone and wallet in a front pocket."] },
+          { id: "yu", name: "Yu Garden and old bazaar", zh: "豫园", img: "img/yu.jpg",
+            alt: "Chinese pavilion with curved roof beside a pond in Yu Garden",
+            distance: "In the old city, about 15 minutes from the Bund by taxi",
+            travel: "Taxi, or metro to Yuyuan Garden station.",
+            time: "2 to 3 hours", walking: 2, entry: "Garden ticket needed {TBD}. The bazaar streets around it are free.",
+            expect: [
+              "A classical Chinese garden over 400 years old: ponds, rocks, halls and zig-zag bridges.",
+              "Around it is a busy bazaar of old-style buildings with shops and snacks."
+            ],
+            tips: ["Go in the morning, before the crowds.", "Good place to buy small gifts. Prices in the bazaar can be bargained."] },
+          { id: "lujiazui", name: "Lujiazui skyline and Shanghai Tower", zh: "陆家嘴 · 上海中心大厦", img: "img/lujiazui.jpg",
+            alt: "Shanghai skyline at dusk with the Oriental Pearl Tower and Shanghai Tower",
+            distance: "Across the river from the Bund",
+            travel: "Metro Line 2 to Lujiazui station, or taxi.",
+            time: "2 hours", walking: 1, entry: "Shanghai Tower viewing deck: about ¥180 {TBD}",
+            expect: [
+              "The famous modern skyline of Shanghai.",
+              "Shanghai Tower is China's tallest building. A very fast lift takes you up to the viewing floor.",
+              "On a clear day you can see the whole city."
+            ],
+            tips: ["Check the weather. On a cloudy day you will not see much from the top."] },
+          { id: "nanjingrd", name: "Nanjing Road", zh: "南京路步行街", img: "img/nanjingrd.jpg",
+            alt: "Nanjing Road at night with bright shop signs",
+            distance: "City centre, walks into the Bund",
+            travel: "Metro to East Nanjing Road station.",
+            time: "1 to 2 hours", walking: 2, entry: "Free",
+            expect: [
+              "Shanghai's most famous shopping street. Cars are not allowed on the main part.",
+              "Big department stores, bright signs at night, food shops."
+            ],
+            tips: ["Walk from Nanjing Road to the Bund in the evening. They join up."] },
+          { id: "frenchc", name: "Former French Concession", zh: "武康路 · 武康大楼", img: "img/frenchc.jpg",
+            alt: "Wukang Mansion, an old wedge-shaped building on a tree-lined corner",
+            distance: "About 20 to 30 minutes from the Bund by taxi",
+            travel: "Taxi to Wukang Mansion on Wukang Road.",
+            time: "2 to 3 hours", walking: 2, entry: "Free",
+            expect: [
+              "Quiet streets with big plane trees and old European-style houses.",
+              "Cafes and small shops. A calm break from the busy city centre."
+            ],
+            tips: ["Wukang Mansion is a famous photo spot. Start there and walk."] }
+        ] },
+      { title: "Day trips from Shanghai", note: "Go in the morning, come back to your Shanghai hotel at night.",
+        items: [
+          { id: "suzhou", name: "Suzhou gardens", zh: "苏州 · 拙政园", img: "img/suzhou.jpg",
+            alt: "Pond and autumn trees in the Humble Administrator's Garden, Suzhou",
+            distance: "About 100 km",
+            travel: "Fast train to **Suzhou** station (not Suzhou North): about 25 to 30 minutes. Then a 15 to 20 minute walk or a short taxi to the gardens.",
+            time: "Full day", walking: 2, entry: "Garden tickets needed {TBD}",
+            expect: [
+              "Famous for classical gardens. The biggest is the **Humble Administrator's Garden**: ponds, bridges, pavilions.",
+              "Pingjiang Road is an old canal street with small shops and tea houses.",
+              "Calm and beautiful. Easy pace."
+            ],
+            tips: ["Book garden tickets online a day before, with your passport.", "Suzhou station is much closer to the gardens than Suzhou North."] },
+          { id: "hangzhou", name: "Hangzhou: West Lake", zh: "杭州 · 西湖", img: "img/hangzhou.jpg",
+            alt: "Stone arch bridge and willow trees on West Lake, Hangzhou",
+            distance: "About 175 km",
+            travel: "Fast train to **Hangzhou East**: about 45 to 60 minutes. Then metro or taxi to the lake.",
+            time: "Full day, or stay one night (Plan D)", walking: 2, entry: "The lake is free. Boats extra.",
+            expect: [
+              "A large lake with hills, willow trees, old bridges and pagodas. Many Chinese call it the most beautiful place in China.",
+              "Take a boat across the lake, or walk along the causeways (paths across the water).",
+              "Tea villages in the hills nearby grow the famous Longjing (Dragon Well) green tea."
+            ],
+            tips: ["The lake is very big. Use a boat or an electric cart instead of walking all the way round."] },
+          { id: "lingyin", name: "Lingyin Temple, Hangzhou", zh: "灵隐寺", img: "img/lingyin.jpg",
+            alt: "Main hall of Lingyin Temple with golden signs and incense",
+            distance: "In the hills of Hangzhou, about 20 minutes by taxi from West Lake",
+            travel: "Combine with West Lake on the same day.",
+            time: "2 to 3 hours", walking: 2, entry: "Tickets needed {TBD}",
+            expect: [
+              "One of China's most famous Buddhist temples, about 1,700 years old.",
+              "Hundreds of Buddha figures carved into the rocks of the hill beside it (Feilai Feng).",
+              "Peaceful, with big trees and incense."
+            ],
+            tips: ["Shoulders and knees covered is respectful inside temples."] },
+          { id: "zhujiajiao", name: "Zhujiajiao water town", zh: "朱家角", img: "img/zhujiajiao.jpg",
+            alt: "Old stone arch bridge over a canal in Zhujiajiao",
+            distance: "About 50 km, still inside Shanghai",
+            travel: "Metro **Line 17** to Zhujiajiao station, exit 1. About 1 hour, then a 15 to 20 minute walk.",
+            time: "Half day", walking: 2, entry: "The town is free. Some gardens inside charge a small fee.",
+            expect: [
+              "An old canal town: stone bridges, narrow lanes, wooden houses by the water.",
+              "Small boats take you along the canals.",
+              "Snack stalls everywhere. Easy to reach with no train booking."
+            ],
+            tips: ["Agree the boat price before you get in."] },
+          { id: "wuzhen", name: "Wuzhen water town", zh: "乌镇 · 西栅", img: "img/wuzhen.jpg",
+            alt: "Wooden boat on a canal in front of old houses in Wuzhen",
+            distance: "About 140 km",
+            travel: "Fast train to **Tongxiang** (30 to 45 min), then taxi to the West Scenic Area (35 to 40 min). About 1.5 to 2 hours in total.",
+            time: "Full day", walking: 2, entry: "Ticket needed for the West Scenic Area (Xizha) {TBD}",
+            expect: [
+              "Bigger and better kept than Zhujiajiao. Old houses built over the water.",
+              "Very beautiful in the evening when the lamps are lit.",
+              "Some people stay one night in a hotel inside the town."
+            ],
+            tips: ["The last cheap bus from Tongxiang station leaves at 17:20. A taxi is easier."] },
+          { id: "nanjing", name: "Nanjing: history city", zh: "南京 · 中山陵", img: "img/nanjing.jpg",
+            alt: "Long stone stairway up to the Sun Yat-sen Mausoleum among autumn trees",
+            distance: "About 300 km",
+            travel: "Fast train to **Nanjing South**: about 1.5 hours. Then taxi or metro.",
+            time: "Full, long day", walking: 3, entry: "Book Sun Yat-sen Mausoleum online in advance {TBD}",
+            expect: [
+              "China's old capital, with very big history.",
+              "The **Sun Yat-sen Mausoleum** is the grand tomb of the founder of modern China, up a long stone stairway in a green forest.",
+              "Allow about half a day for the mausoleum alone."
+            ],
+            tips: ["There are hundreds of steps at the mausoleum. Take breaks."] },
+          { id: "wuxi", name: "Wuxi: Lingshan Buddha", zh: "无锡 · 灵山大佛", img: "img/wuxi.jpg",
+            alt: "Golden lotus fountain show in the Lingshan scenic area, Wuxi",
+            distance: "About 130 km",
+            travel: "Fast train to **Wuxi** station: about 40 to 60 minutes. Then about 1 hour by taxi or bus 88 to Lingshan.",
+            time: "Full day", walking: 2, entry: "About ¥210 {TBD}",
+            expect: [
+              "A huge Buddhist park beside Lake Tai, with one of the world's tallest bronze Buddha statues.",
+              "A golden lotus fountain show and a grand palace hall.",
+              "Open about 07:00 to 17:00 in November."
+            ],
+            tips: ["An escalator up to the Buddha costs a little extra and saves many steps."] }
+        ] },
+      { title: "Needs one night away", note: "Too far for a day trip.",
+        items: [
+          { id: "huangshan", name: "Yellow Mountain (Huangshan)", zh: "黄山", img: "img/huangshan.jpg",
+            alt: "Sea of clouds below rocky peaks seen from the top of Huangshan",
+            distance: "About 400 km",
+            travel: "Fast train to **Huangshan North**: about 2.5 to 3.5 hours. Then a bus or taxi to the mountain.",
+            time: "2 days, 1 night (Plan G)", walking: 3, entry: "Mountain and cable car tickets needed {TBD}",
+            expect: [
+              "China's most famous mountain. Granite peaks, twisted pine trees, and clouds below you.",
+              "Cable cars take you most of the way up. Then you walk on stone steps between viewpoints.",
+              "Cold and windy at the top, even when Shanghai is warm."
+            ],
+            tips: ["Only go if your knees are good with many steps.", "Take a warm jacket, a cap and water."] }
+        ] }
+    ],
+    // Photo credits (required by the photo licences). Keep these if you keep the photos.
+    credits: [
+      { place: "The Bund", by: "xiquinhosilva", lic: "CC BY 2.0", url: "https://commons.wikimedia.org/wiki/File:The_Bund_22079-Shanghai_(32913511622).jpg" },
+      { place: "Yu Garden", by: "Chainwit.", lic: "CC BY 4.0", url: "https://commons.wikimedia.org/wiki/File:2024-Apr_Shanghai_Yu_Yuan_Garden_%E8%B1%AB%E5%9B%AD_-_img_20.jpg" },
+      { place: "Lujiazui", by: "Wilson Hui", lic: "CC BY 2.0", url: "https://commons.wikimedia.org/wiki/File:Shanghai_Skyline_from_the_Bund.jpg" },
+      { place: "Nanjing Road", by: "Hermann Luyken", lic: "CC0", url: "https://commons.wikimedia.org/wiki/File:2014.11.15.181427_Nanjing_Road_Pedestrian_Zone_Shanghai.jpg" },
+      { place: "French Concession", by: "N509FZ", lic: "CC BY-SA 4.0", url: "https://commons.wikimedia.org/wiki/File:Wukang_Mansion_(20191114161507).jpg" },
+      { place: "Suzhou", by: "King of Hearts", lic: "CC BY-SA 4.0", url: "https://commons.wikimedia.org/wiki/File:Humble_Administrator%27s_Garden_Suzhou_November_2017_005.jpg" },
+      { place: "West Lake", by: "Circa24", lic: "CC BY-SA 4.0", url: "https://commons.wikimedia.org/wiki/File:Hangzhou_China_West_Lake_4.jpg" },
+      { place: "Lingyin Temple", by: "Tyg728", lic: "CC BY-SA 4.0", url: "https://commons.wikimedia.org/wiki/File:Lingyin_Temple,_Hangzhou_20161003.jpg" },
+      { place: "Zhujiajiao", by: "BrokenSphere", lic: "CC BY-SA 3.0", url: "https://commons.wikimedia.org/wiki/File:Zhujiajiao_canal_bridge.JPG" },
+      { place: "Wuzhen", by: "Jakub Hałun", lic: "CC BY-SA 3.0", url: "https://commons.wikimedia.org/wiki/File:20090913_Wuzhen_Town_canal_5133.jpg" },
+      { place: "Nanjing", by: "Lauren yeechau", lic: "CC BY-SA 4.0", url: "https://commons.wikimedia.org/wiki/File:Sun_Yat-sen_Mausoleum_(%E4%B8%AD%E5%B1%B1%E9%99%B5%EF%BC%89.jpg" },
+      { place: "Wuxi", by: "王波波", lic: "CC BY-SA 3.0", url: "https://commons.wikimedia.org/wiki/File:Grand_Buddha_at_Ling_Shan.jpg" },
+      { place: "Huangshan", by: "JesseW900", lic: "CC BY-SA 4.0", url: "https://commons.wikimedia.org/wiki/File:Sea_of_clouds_viewed_from_the_top_of_Huangshan.jpg" }
+    ]
+  },
+
+  /* =================== STEP 4: Free days =================== */
   freeDays: {
     intro: "China makes most of the world's facade-cleaning drones and robots. Your free days can be a holiday, a business trip, or both.",
     weekendNote: "Note: 31 Oct is a Saturday and 1 Nov is a Sunday. Some companies may be closed. Fri 30 Oct and Mon 2 Nov are working days.",
@@ -468,19 +664,47 @@ const TRIP = {
         meters: { effort: 1, cost: 2, business: 0 },
         goodFor: "A slow, peaceful break.",
         watchOut: "No business visits. You change hotels twice."
+      },
+      {
+        id: "E", icon: "🛶", title: "E. Old water towns",
+        subtitle: "Zhujiajiao + Wuzhen, back to Shanghai each night",
+        summary: "See old canal towns with stone bridges and boats. Sleep in your Shanghai hotel every night.",
+        plan: [
+          "**Sat 31 Oct:** Zhujiajiao by Metro Line 17. About 1 hour each way. Half a day is enough.",
+          "**Sun 1 Nov:** Wuzhen. Fast train to Tongxiang, then a taxi. About 1.5 to 2 hours each way. A full day.",
+          "**Mon 2 Nov:** Rest in Shanghai and pack. Or visit a company if one is open."
+        ],
+        meters: { effort: 2, cost: 1, business: 0 },
+        goodFor: "Old China, slow walks by the water, good photos.",
+        watchOut: "Both towns are crowded at weekends. The Wuzhen day is long."
+      },
+      {
+        id: "F", icon: "🏛️", title: "F. History and a giant Buddha",
+        subtitle: "Nanjing + Wuxi day trips",
+        summary: "Two longer day trips by fast train. Big history in Nanjing, a huge Buddha site in Wuxi.",
+        plan: [
+          "**Sat 31 Oct:** Nanjing. About 1.5 hours by fast train. Sun Yat-sen Mausoleum and the old city.",
+          "**Sun 1 Nov:** Wuxi. About 40 to 60 minutes by fast train, then about 1 hour to Lingshan.",
+          "**Mon 2 Nov:** Rest in Shanghai and pack. Or visit a company."
+        ],
+        meters: { effort: 3, cost: 2, business: 0 },
+        goodFor: "History lovers. Big, grand places.",
+        watchOut: "Long travel days. Lots of steps at the Sun Yat-sen Mausoleum."
+      },
+      {
+        id: "G", icon: "⛰️", title: "G. Yellow Mountain (Huangshan)",
+        subtitle: "One night near the mountain",
+        summary: "China's most famous mountain: granite peaks, pine trees and a sea of clouds.",
+        plan: [
+          "**Sat 31 Oct:** Fast train to Huangshan North. About 2.5 to 3.5 hours. Stay near the mountain.",
+          "**Sun 1 Nov:** Up the mountain by cable car. Walk between viewpoints.",
+          "**Mon 2 Nov:** Train back to Shanghai."
+        ],
+        meters: { effort: 3, cost: 3, business: 0 },
+        goodFor: "Nature lovers. Unforgettable views.",
+        watchOut: "Many stone steps, even with cable cars. Cold and windy on top. Book train and hotel early. Weekend crowds."
       }
     ],
-    sights: {
-      icon: "🌆", title: "Things to see in Shanghai (30 Oct)",
-      lines: ["Tap the ones you want to see."],
-      list: [
-        "The Bund (old riverside buildings)",
-        "Yu Garden",
-        "Nanjing Road (shopping street)",
-        "Lujiazui skyline and Shanghai Tower",
-        "French Concession (old tree-lined streets)"
-      ]
-    },
     importWarning: {
       icon: "⚠️", title: "Important if you plan to buy",
       lines: [
@@ -495,7 +719,7 @@ const TRIP = {
     }
   },
 
-  /* =================== STEP 4: Internet =================== */
+  /* =================== STEP 5: Internet =================== */
   internet: {
     explainer: {
       icon: "🌐", title: "Why WhatsApp and Google stop working in China",
@@ -537,6 +761,26 @@ const TRIP = {
         ]
       }
     ],
+    // VPN suggestions. Prices change often, so they are marked {TBD}.
+    vpns: {
+      icon: "🛡️", title: "If you want a VPN as a backup",
+      lines: [
+        "You do not need a VPN if the travel eSIM works. A VPN is only a spare key.",
+        "These are the names travellers mention most for China:"
+      ],
+      list: [
+        { name: "Astrill", note: "Often called the most reliable in China. Costs more: about US$15 a month. {TBD} In the app, turn on **StealthVPN** mode." },
+        { name: "ExpressVPN", note: "The most popular choice. Easy to use. About US$13 a month. {TBD}" },
+        { name: "LetsVPN", note: "Cheaper and simple for beginners. It may keep some of your data, so do not use it for banking." }
+      ],
+      more: [
+        "**Buy and install it in India.** VPN websites and apps are blocked inside China.",
+        "**Test it once** before you fly: turn it on and open WhatsApp.",
+        "No VPN works every day in every city. That is why it is only a backup.",
+        "China only allows VPNs it has approved. Visitors commonly use them, but keep it simple and do not depend on one. {TBD}",
+        "Pay monthly, not yearly. You only need it for this trip."
+      ]
+    },
     bestSetup: {
       icon: "✅", title: "Best setup",
       lines: [
@@ -548,7 +792,7 @@ const TRIP = {
     }
   },
 
-  /* =================== STEP 5: Chinese apps =================== */
+  /* =================== STEP 6: Chinese apps =================== */
   apps: {
     mustDo: {
       icon: "🏠", title: "Do this at home in India, before you fly",
@@ -597,10 +841,10 @@ const TRIP = {
       ]
     },
     helpButton: "Ask Raunak for help on WhatsApp",
-    helpMessage: "Hi Raunak, I need help with the China phone setup (Step 5)."
+    helpMessage: "Hi Raunak, I need help with the China phone setup (Step 6)."
   },
 
-  /* =================== STEP 6: Things to know =================== */
+  /* =================== STEP 7: Things to know =================== */
   know: {
     intro: "Tap any card to read more.",
     cards: [
@@ -642,7 +886,63 @@ const TRIP = {
         lines: ["China is 2.5 hours ahead of India."],
         more: ["When it is 12:00 noon in India, it is 14:30 in China."] },
       { icon: "🚨", title: "Emergency numbers", tone: "red",
-        lines: ["Police: **110**", "Ambulance: **120**"] }
+        lines: ["Police: **110**", "Ambulance: **120**", "Fire: **119**"],
+        more: [
+          "**Indian Consulate in Shanghai** (for passport loss or serious trouble):",
+          "Office phone: +86 21 6275 8882",
+          "After hours: +86 189 3031 4575 {TBD}",
+          "Check the latest numbers and address on cgishanghai.gov.in before you fly. The office may have moved in late 2025. {TBD}"
+        ] }
+    ],
+    // "Other things to keep in mind": shown as a second group of cards.
+    keepInMindTitle: "Other things to keep in mind",
+    keepInMind: [
+      { icon: "🛂", title: "Carry your passport every day",
+        lines: ["You need it for hotels, trains, and many tickets."],
+        more: ["Keep a photo of it on your phone and a paper copy in your bag.", "Never leave it as a deposit anywhere."] },
+      { icon: "🎟️", title: "Book famous sights a day early",
+        lines: ["Many big sights sell tickets online only, with your passport number."],
+        more: ["Use Trip.com. It has English and takes your passport.", "31 Oct and 1 Nov are a weekend. Sights and trains will be busier, so book early."] },
+      { icon: "🚕", title: "Taxis",
+        lines: ["Use **DiDi** (China's Uber). Open it inside Alipay. It works in English."],
+        more: [
+          "Pay through Alipay. Most taxi staff do not speak English, so the app tells them where to go.",
+          "At airports and big stations, follow the signs to the special pickup area. You cannot get a DiDi at the front door.",
+          "Keep your hotel's address in Chinese on your phone. Show it to any taxi."
+        ] },
+      { icon: "🚰", title: "Water",
+        lines: ["Do not drink tap water. Drink bottled or boiled water."] },
+      { icon: "🧻", title: "Toilets",
+        lines: ["Carry tissues and hand sanitiser. Many public toilets have no paper."],
+        more: ["Many public toilets are squat style. Malls and hotels usually have Western toilets."] },
+      { icon: "🔌", title: "Plugs and charging",
+        lines: ["China uses 220 volts, like India. Your phone charger works."],
+        more: ["The socket shape can be different. Bring the universal plug adapter."] },
+      { icon: "🗣️", title: "Language",
+        lines: ["Few people speak English, even in hotels and shops."],
+        more: ["Use Apple Translate. Speak into it, or point the camera at a sign or menu.", "Download Mandarin in Translate before you fly so it works offline."] },
+      { icon: "🤝", title: "Business meetings",
+        lines: ["Carry plenty of business cards. Give and take them with both hands."],
+        more: [
+          "Most Chinese business people use WeChat. Ask for email or WhatsApp instead (see Step 6).",
+          "Take photos of machines and price lists. Ask for brochures in English.",
+          "Do not pay any deposit on the spot. Talk to Raunak first."
+        ] },
+      { icon: "🛍️", title: "Shopping and Indian customs",
+        lines: ["You can bring goods worth up to **₹75,000** into India without duty."],
+        more: [
+          "This is under India's new Baggage Rules 2026. Above that amount you pay duty. {TBD}",
+          "Keep all bills. Declare anything above the limit at the red channel.",
+          "Drones are special. See the warning in Step 4 before buying one."
+        ] },
+      { icon: "🚶", title: "Crossing the road",
+        lines: ["Electric scooters are silent and come from all sides. Look both ways, even on the footpath."] },
+      { icon: "🩺", title: "Health and insurance",
+        lines: ["Buy travel insurance before you fly."],
+        more: ["Keep medicines in their original boxes, with a doctor's note.", "Carry a few days of extra medicine."] },
+      { icon: "✈️", title: "Flying home on 3 Nov",
+        lines: ["Reach Shanghai Pudong airport 3 hours before your flight."],
+        more: ["Pudong is far from the city centre. Leave your hotel early.", "Power bank goes in your cabin bag, not the checked bag."] }
     ],
     phrases: {
       icon: "🗣️", title: "Show this to the waiter",
@@ -655,7 +955,7 @@ const TRIP = {
     }
   },
 
-  /* =================== STEP 7: Send =================== */
+  /* =================== STEP 8: Send =================== */
   // "short" is the label used in the WhatsApp message.
   send: {
     intro: "Check your choices. Answer a few quick questions. Then press the green button.",
@@ -686,7 +986,7 @@ const TRIP = {
 
 /* ----- Saving answers (works even if the phone blocks storage) ----- */
 const DEFAULT_STATE = {
-  step: 1, freeDays: "", sights: {}, interest: "", internet: "",
+  step: 1, freeDays: "", places: {}, interest: "", internet: "",
   appDone: {}, answers: {}, checklist: {}
 };
 const storage = {
@@ -706,7 +1006,7 @@ const storage = {
   }
 };
 let state = Object.assign({}, DEFAULT_STATE, storage.load() || {});
-["sights", "appDone", "answers", "checklist"].forEach(k => {
+["places", "appDone", "answers", "checklist"].forEach(k => {
   if (!state[k] || typeof state[k] !== "object") state[k] = {};
 });
 function showStorageNote() { document.getElementById("storageNote").hidden = false; }
@@ -737,6 +1037,11 @@ function card(c, extra) {
     ${paras(c.lines)}${extra || ""}${more(c.more, c.moreList)}</article>`;
 }
 const WORDS = ["None", "Low", "Medium", "High"];
+function meterDots(label, n) {
+  let dots = "";
+  for (let i = 0; i < 3; i++) dots += `<span class="dot${i < n ? " on" : ""}"></span>`;
+  return `<span class="dots" role="img" aria-label="${label}: ${n} out of 3">${dots}</span>`;
+}
 function meter(label, n) {
   let dots = "";
   for (let i = 0; i < 3; i++) dots += `<span class="dot${i < n ? " on" : ""}"></span>`;
@@ -793,7 +1098,31 @@ function buildStep2() {
     ${card({ icon: ct.icon, title: ct.title, lines: [] }, contactExtra + `<p style="margin-top:12px">${t(ct.lines[0])}</p>`)}`;
 }
 
-function buildStep3() {
+function buildPlaces() {
+  const P = TRIP.places;
+  const groups = P.groups.map(g => `<h2 class="group-title">${t(g.title)}</h2><p>${t(g.note)}</p>` +
+    g.items.map(x => `<article class="card place" data-place="${x.id}">
+      <img class="photo" src="${esc(x.img)}" alt="${esc(x.alt)}" width="720" height="480" loading="lazy" decoding="async">
+      <h3 class="place-name">${t(x.name)} <span class="zh-name" lang="zh-CN">${esc(x.zh)}</span></h3>
+      <dl class="facts">
+        <div><dt>📍 Distance</dt><dd>${t(x.distance)}</dd></div>
+        <div><dt>🚄 Getting there</dt><dd>${t(x.travel)}</dd></div>
+        <div><dt>⏱️ Time needed</dt><dd>${t(x.time)}</dd></div>
+        <div><dt>🚶 Walking</dt><dd>${meterDots("Walking", x.walking)} ${WORDS[x.walking]}</dd></div>
+        <div><dt>🎟️ Entry</dt><dd>${t(x.entry)}</dd></div>
+      </dl>
+      <p class="label">What to expect</p>
+      <ul>${x.expect.map(e => `<li>${t(e)}</li>`).join("")}</ul>
+      ${more([], x.tips)}
+      <button type="button" class="btn choose like" data-multi="places" data-val="${x.id}" aria-pressed="false">
+        <span class="off-txt">☆ I'd like to go</span><span class="on-txt">★ I'd like to go</span></button>
+    </article>`).join("")).join("");
+  const credits = `<details class="more"><summary>Photo credits</summary><div class="inner"><ul>${P.credits.map(c =>
+    `<li>${esc(c.place)}: ${esc(c.by)}, <a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.lic)}</a>, via Wikimedia Commons</li>`).join("")}</ul></div></details>`;
+  return `<p class="lead">${t(P.intro)}</p>${card(P.howTo)}${groups}${credits}`;
+}
+
+function buildFreeDays() {
   const f = TRIP.freeDays;
   const opts = f.options.map(o => `<article class="card option" data-option="${o.id}">
       ${o.recommended ? '<span class="tag rec">★ Recommended</span>' : ""}
@@ -806,14 +1135,12 @@ function buildStep3() {
       <button type="button" class="btn choose" data-key="freeDays" data-val="${o.id}" aria-pressed="false">
         <span class="off-txt">Choose this</span><span class="on-txt">✓ You chose this</span></button>
     </article>`).join("");
-  const s = f.sights;
   const imp = Object.assign({ tone: "amber" }, f.importWarning);
   const interest = `<h3 style="margin-top:14px">${t(f.interest.question)}</h3>${pills("interest", f.interest.options)}`;
   return `<p class="lead">${t(f.intro)}</p>
     <p>Pick <strong>one</strong> plan. Tap "Tell me more" to see each day.</p>
     ${card({ icon: "📅", title: "Good to know", lines: [f.weekendNote] })}
     ${opts}
-    ${card(s, ticks("sights", s.list))}
     ${card(imp, interest)}`;
 }
 
@@ -826,7 +1153,8 @@ function buildStep4() {
       <button type="button" class="btn choose" data-key="internet" data-val="${o.id}" aria-pressed="false">
         <span class="off-txt">Choose this</span><span class="on-txt">✓ You chose this</span></button>
     </article>`).join("");
-  return `${card(n.explainer)}<p class="lead"><strong>${t(n.pickLine)}</strong></p>${opts}${card(n.bestSetup)}`;
+  const vpnList = `<ul class="applist">${n.vpns.list.map(v => `<li><strong>${t(v.name)}</strong><br>${t(v.note)}</li>`).join("")}</ul>`;
+  return `${card(n.explainer)}<p class="lead"><strong>${t(n.pickLine)}</strong></p>${opts}${card(n.bestSetup)}${card(n.vpns, vpnList)}`;
 }
 
 function buildStep5() {
@@ -852,7 +1180,8 @@ function buildStep6() {
   const cards = k.cards.map(c => card(c)).join("");
   const ph = k.phrases;
   const rows = ph.list.map(p => `<div class="zh-row"><p class="zh" lang="zh-CN">${esc(p.zh)}</p><p class="zh-en">${t(p.en)}</p></div>`).join("");
-  return `<p class="lead">${t(k.intro)}</p>${cards}${card(ph, rows)}`;
+  const keep = k.keepInMind.map(c => card(c)).join("");
+  return `<p class="lead">${t(k.intro)}</p>${cards}${card(ph, rows)}<h2 class="group-title">${t(k.keepInMindTitle)}</h2>${keep}`;
 }
 
 function buildStep7() {
@@ -872,7 +1201,7 @@ function buildStep7() {
     <details class="more"><summary>See the message that will be sent</summary><div class="preview" id="preview"></div></details>`;
 }
 
-const BUILDERS = [buildStep1, buildStep2, buildStep3, buildStep4, buildStep5, buildStep6, buildStep7];
+const BUILDERS = [buildStep1, buildStep2, buildPlaces, buildFreeDays, buildStep4, buildStep5, buildStep6, buildStep7];
 
 /* ----- Summary text for WhatsApp ----- */
 function choiceLabel(list, id, field) {
@@ -881,14 +1210,14 @@ function choiceLabel(list, id, field) {
 }
 function summaryRows() {
   const f = TRIP.freeDays, s = TRIP.send;
-  const sights = f.sights.list.filter(x => state.sights[x]).map(x => x.replace(/\s*\(.*\)/, ""));
+  const liked = [].concat(...TRIP.places.groups.map(g => g.items)).filter(x => state.places[x.id]).map(x => plain(x.name));
   const rows = [
-    { label: "Free days (31 Oct to 2 Nov)", value: choiceLabel(f.options, state.freeDays), step: 3 },
-    { label: "Shanghai sights", value: sights.join(", "), step: 3 },
-    { label: "Business interest", value: state.interest, step: 3 },
-    { label: "Internet", value: choiceLabel(TRIP.internet.options, state.internet), step: 4 }
+    { label: "Places I'd like to see", value: liked.join(", "), step: 3 },
+    { label: "Free days (31 Oct to 2 Nov)", value: choiceLabel(f.options, state.freeDays), step: 4 },
+    { label: "Business interest", value: state.interest, step: 4 },
+    { label: "Internet", value: choiceLabel(TRIP.internet.options, state.internet), step: 5 }
   ];
-  s.questions.forEach(q => rows.push({ label: q.short || q.q, value: state.answers[q.id] || "", step: 7 }));
+  s.questions.forEach(q => rows.push({ label: q.short || q.q, value: state.answers[q.id] || "", step: 8 }));
   return rows;
 }
 function buildMessage() {
@@ -898,7 +1227,7 @@ function buildMessage() {
   const done = s.checklist.filter(c => state.checklist[c]);
   const todo = s.checklist.filter(c => !state.checklist[c]);
   const appSteps = Object.keys(state.appDone).filter(k => state.appDone[k]).length;
-  lines.push("", `Phone setup (Step 5): ${appSteps} of ${TRIP.apps.walkthrough.length} steps done`);
+  lines.push("", `Phone setup (Step 6): ${appSteps} of ${TRIP.apps.walkthrough.length} steps done`);
   lines.push("", "Before you fly, done:");
   lines.push(done.length ? done.map(d => "✅ " + d).join("\n") : "Nothing ticked yet");
   lines.push("", "Still to do:");
